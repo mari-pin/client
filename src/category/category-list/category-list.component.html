@@ -8,7 +8,7 @@
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Nombre categoría  </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Nombre categoría </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
@@ -16,8 +16,11 @@
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <button mat-icon-button color="primary" (click)="editCategory(element)">
-                    <mat-icon>edit</mat-icon></button>
-                <button mat-icon-button color="accent"><mat-icon>clear</mat-icon></button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="deleteCategory(element)">
+                    <mat-icon>clear</mat-icon>
+                </button>
             </mat-cell>
         </ng-container>
 
@@ -27,5 +30,5 @@
 
     <div class="buttons">
         <button mat-flat-button color="primary" (click)="createCategory()">Nueva categoría</button>
-    </div>   
+    </div>
 </div>
