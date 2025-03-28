@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CategoryService } from '../services/category.service';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
+import { DialogConfirmationComponent } from '../../app/core/dialog-confirmation/dialog-confirmation.component';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -17,7 +18,8 @@ import { MatDialog } from '@angular/material/dialog';
         MatButtonModule,
         MatIconModule,
         MatTableModule,
-        CommonModule
+        CommonModule,
+        
     ],
     templateUrl: './category-list.component.html',
     styleUrls:[ './category-list.component.scss']
@@ -59,4 +61,20 @@ export class CategoryListComponent implements OnInit{
       this.ngOnInit();
     });
   }
+
+
+  deleteCategory(category: Category) {    
+    const dialogRef = this.dialog.open(DialogConfirmationComponent, {
+      data: { title: "Eliminar categoría", description: "Atención si borra la categoría se perderán sus datos.<br> ¿Desea eliminar la categoría?" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.categoryService.deleteCategory(category.id).subscribe(result => {
+          this.ngOnInit();
+        }); 
+      }
+    });
+  }  
+
 }
