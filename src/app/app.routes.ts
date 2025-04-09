@@ -7,8 +7,8 @@ export const routes: Routes = [
 
     { path: 'authors', loadComponent: () => import('../author/author-list/author-list.component').then(m => m.AuthorListComponent)},
 
-    { path: 'games', loadComponent: () => import('../game/game-list/game-list.component').then(m => m.GameListComponent)}
+    { path: 'games', loadComponent: () => import('../game/game-list/game-list.component').then(m => m.GameListComponent)},
 
-
+    {path: 'clients', loadComponent: () => import('../client/client-list/client-list.component').then(m => m.ClientListComponent)}
 
 ];
