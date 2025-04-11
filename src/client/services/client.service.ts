@@ -21,7 +21,7 @@ export class ClientService {
 
     const {id} = client
     const url = id ? `${this.baseUrl}/${id}` : this.baseUrl;
-    return this.http.post<Client>(url, client);    
+    return this.http.put<Client>(url, client);    
   
 
 }
