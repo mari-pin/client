@@ -18,6 +18,10 @@
         </mat-form-field>
     </form>
 
+    <div class="error-message">
+        <mat-error *ngIf="error">{{errorMessage}}</mat-error>
+    </div>
+
     <div class="buttons">
         <button mat-stroked-button (click)="onClose()">Cerrar</button>
         <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
