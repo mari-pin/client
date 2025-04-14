@@ -16,6 +16,7 @@ import { Game } from '../../game/model/Game';
 import { Client } from '../../client/model/Client';
 
 
+
 @Component({
   selector: 'app-loan-edit',
   standalone: true,
@@ -28,6 +29,7 @@ import { Client } from '../../client/model/Client';
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
+    
 
   ],
   providers: [
@@ -56,8 +58,7 @@ export class PrestamoEditComponent implements OnInit {
     private prestamoService: PrestamoService, 
     private clientService: ClientService,
     private gameService: GameService,
-    private datePipe: DatePipe
-
+   
   ){}
   ngOnInit(): void {
     this.prestamo = this.data.prestamo ? Object.assign({}, this.data.prestamo) : new Prestamo();
