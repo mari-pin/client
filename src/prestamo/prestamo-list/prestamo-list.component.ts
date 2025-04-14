@@ -53,7 +53,6 @@ export class PrestamoListComponent implements OnInit {
 
     filterClient:Client;
     filterGame:Game;
-    filterInitDate: Date;
     filterDate: Date;
 
 
@@ -63,15 +62,15 @@ export class PrestamoListComponent implements OnInit {
 
     dataSource = new MatTableDataSource<Prestamo>();
 
-    displayedColumns: string[] = ['id', 'clientname', 'namegame', 'initDate', 'endDate', 'action'];
+    displayedColumns: string[] = ['id', 'nameclient', 'namegame', 'initDate', 'endDate', 'action'];
 
     constructor(
       private prestamoService: PrestamoService,
       private clientService: ClientService,
       private gameService: GameService,
-      public dialog: MatDialog,
-      private datePipe:DatePipe) { }
-
+      public dialog: MatDialog
+      ) { }
+     
 
   ngOnInit(): void {
 
@@ -95,7 +94,7 @@ export class PrestamoListComponent implements OnInit {
       const clientId = this.filterClient != null ? this.filterClient.id : null;
       const gameId = this.filterGame != null ? this.filterGame.id : null;
 
-      this.prestamoService.getPrestamos(pageable, clientId, gameId, this.filterInitDate).subscribe((data)=>{
+      this.prestamoService.getPrestamos(pageable, clientId, gameId, this.filterDate).subscribe((data)=>{
         this.dataSource.data = data.content;
         this.pageNumber = data.pageable.pageNumber;
         this.pageSize = data.pageable.pageSize;
@@ -106,7 +105,7 @@ export class PrestamoListComponent implements OnInit {
   onCleanFilter(): void{
     this.filterClient = null;
     this.filterGame = null;
-    this.filterInitDate = null;
+    this.filterDate = null;
     this.onSearch();
   }
   onSearch(): void{

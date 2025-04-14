@@ -6,5 +6,4 @@ export class PrestamoPage {
     content: Prestamo[];
     pageable: Pageable;
     totalElements: number;
-    //totalPages: number;
 }
